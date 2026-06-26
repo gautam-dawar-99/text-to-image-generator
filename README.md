@@ -128,17 +128,6 @@ http://localhost:3000
 
 ---
 
-## 📸 Screenshots
-
-### Home Page
-
-_Add your screenshot here_
-
-### Generated Image
-
-_Add your generated image screenshot here_
-
----
 
 ## 📦 API
 
