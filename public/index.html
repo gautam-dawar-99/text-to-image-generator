@@ -1,24 +1,159 @@
-<!doctype html>
-<html>
-  <head>
-    <title>Azure AI Image Generator</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Image Generator</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
     <div class="container">
-      <h1>AI Image Generator</h1>
 
-      <textarea id="prompt" placeholder="Describe your image..."></textarea>
+        <!-- Header -->
+        <div class="header">
+            <h1>🎨 AI Image Generator</h1>
 
-      <button id="generateBtn">Generate</button>
+            <p>
+                Transform your imagination into stunning AI-generated artwork
+                using <strong>Azure AI Foundry</strong>.
+            </p>
+        </div>
 
-      <div id="status"></div>
+        <!-- Prompt -->
+        <div class="prompt-section">
 
-      <img id="resultImage" style="max-width: 100%;" />
+            <label for="prompt">
+                ✍️ Describe your image
+            </label>
 
-      <button id="downloadBtn" style="display: none">Download Image</button>
+            <textarea id="prompt"
+                placeholder="Example: A futuristic floating city above the clouds during sunset, cinematic lighting, ultra realistic, 8K"></textarea>
+
+            <div class="prompt-footer">
+                <small>💡 Be descriptive for better results.</small>
+                <span id="charCount">0 Characters</span>
+            </div>
+
+        </div>
+
+        <!-- Prompt Suggestions -->
+        <div class="suggestions">
+
+            <h3>✨ Try these prompts</h3>
+
+            <div class="chips">
+
+                <button class="chip">
+                    Cyberpunk Tokyo at Night
+                </button>
+
+                <button class="chip">
+                    Dragon Flying Over Mountains
+                </button>
+
+                <button class="chip">
+                    Cute Astronaut Cat
+                </button>
+
+                <button class="chip">
+                    Fantasy Castle
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- Buttons -->
+
+        <div class="buttons">
+
+            <button id="generateBtn">
+                ✨ Generate Image
+            </button>
+
+            <button id="downloadBtn" style="display:none;">
+                ⬇ Download Image
+            </button>
+
+        </div>
+
+        <!-- Status -->
+
+        <div id="status"></div>
+
+        <!-- Image Preview -->
+
+        <div class="image-box">
+
+            <div class="loader" id="loader"></div>
+
+            <div id="imagePlaceholder">
+
+                <h2>🖼️ Preview</h2>
+
+                <p>
+                    Your generated AI artwork will appear here.
+                </p>
+
+            </div>
+
+            <img
+                id="resultImage"
+                alt="Generated AI Image">
+
+        </div>
+
+        <!-- Footer -->
+
+        <footer>
+
+            Built with ❤️ using
+            <strong>Node.js</strong>,
+            <strong>Express</strong>,
+            and
+            <strong>Azure AI Foundry</strong>
+
+        </footer>
+
     </div>
 
     <script src="script.js"></script>
-  </body>
+
+    <script>
+        // Character Counter
+
+        const textarea = document.getElementById("prompt");
+        const counter = document.getElementById("charCount");
+
+        textarea.addEventListener("input", () => {
+            counter.innerText = `${textarea.value.length} Characters`;
+        });
+
+        // Prompt Suggestions
+
+        document.querySelectorAll(".chip").forEach(chip => {
+
+            chip.addEventListener("click", () => {
+
+                textarea.value = chip.innerText;
+
+                counter.innerText = `${textarea.value.length} Characters`;
+
+                textarea.focus();
+
+            });
+
+        });
+    </script>
+
+</body>
+
 </html>
